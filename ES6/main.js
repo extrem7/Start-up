@@ -69,7 +69,7 @@ const timer = {
                     header.button = false
                 }
             });
-            $("header ul a,.scroll-down").click(function (event) {
+            $("header ul a").click(function (event) {
                 event.preventDefault();
                 let target = $(this).attr('href'),
                     top = $(target).offset().top;
@@ -93,32 +93,58 @@ const timer = {
                     $('.mobile-menu').fadeOut();
                 }
             });
+            $(".scroll-down").click(function (event) {
+                event.preventDefault();
+                let target = $(this).attr('href'),
+                    top = $(target).offset().top;
+                $('body,html').animate({scrollTop: top}, Math.abs(top - $(document).scrollTop()) / 1.5);
+            });
         }
     };
 
 function iphone() {
     const selector = '#iphone';
     $(selector).on('slide.bs.carousel', () => {
-        const active = '.carousel .item.active';
-        let img = $(active).find('img').attr('src')
-        $('.carousel-inner').css('background-image', 'url("' + img + '")');
+        const active = '.need .carousel .item.active';
+        let img = $(active).find('img').attr('src');
+        $('.need .carousel-inner').css('background-image', 'url("' + img + '")');
         $(active).css('opacity', 0);
     });
     $(selector).on('slid.bs.carousel', () => {
-        $('.carousel .item').css('opacity', 1);
+        $('.need .carousel .item').css('opacity', 1);
     });
-    $(selector).swiperight(() => {
-        $(selector).carousel('prev');
+    $('.carousel').swiperight((e) => {
+        $(e.currentTarget).carousel('prev');
     });
-    $(selector).swipeleft(() => {
-        $(selector).carousel('next');
+    $('.carousel').swipeleft((e) => {
+        $(e.currentTarget).carousel('next');
     });
+}
+
+function scheme() {
+    if ($('body').width() < 768) {
+        const width = $('body').width(),
+            height = $('.scheme').width(),
+            percentage = Math.floor(width / 680 * 100) / 100 - .03;
+        if (percentage < 1) {
+            $('.scheme').css({
+                transform: `scale(${percentage})`,
+                'transform-origin': '0 0',
+                width: width * (1 / percentage),
+                height: width * (1 / percentage) /3
+            })
+            $('.scheme .third-row').css({
+                width: width * (1 / percentage) * .90
+            })
+        }
+    }
 }
 
 $(() => {
     timer.start();
     header.controller();
     iphone();
+    scheme();
     $(".cheep").hide().show("slide", {direction: "left"}, 600);
     $(".cheep").animate({opacity: 1}, 600);
 });

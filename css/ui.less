@@ -18,7 +18,7 @@
   }
 }
 
-body, html {
+body {
   cursor: default;
   overflow-x: hidden;
   width: 100vw;
@@ -34,7 +34,7 @@ body, html {
 .section-title {
   font-family: Valera;
   color: @black;
-  font-size: 32px;
+  font-size: 42px;
   position: relative;
   width: fit-content;
   font-weight: 500;
@@ -64,8 +64,26 @@ body, html {
   font-size: 16px;
   color: white;
   transition: all .3s;
+  position: relative;
   &:hover {
     color: white !important;
+    &:after {
+      right: 0;
+    }
+  }
+  &.arrow:hover:after {
+    right: 5px;
+  }
+  &.arrow:after {
+    content: '';
+    display: block;
+    height:12px;
+    width: 13px;
+    position: absolute;
+    right: 17px;
+    top: 14px;
+    background-image: url("../images/btn-arrow.png");
+    transition: all .2s;
   }
 }
 

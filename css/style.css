@@ -170,6 +170,16 @@ p {
 }
 body {
   overflow-x: hidden;
+  overflow-y: visible;
+}
+img {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  cursor: default !important;
 }
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -579,8 +589,7 @@ h6 {
     opacity: 1;
   }
 }
-body,
-html {
+body {
   cursor: default;
   overflow-x: hidden;
   width: 100vw;
@@ -594,7 +603,7 @@ html {
 .section-title {
   font-family: Valera;
   color: #26272d;
-  font-size: 32px;
+  font-size: 42px;
   position: relative;
   width: fit-content;
   font-weight: 500;
@@ -622,9 +631,27 @@ html {
   font-size: 16px;
   color: white;
   transition: all .3s;
+  position: relative;
 }
 .btn-blue:hover {
   color: white !important;
+}
+.btn-blue:hover:after {
+  right: 0;
+}
+.btn-blue.arrow:hover:after {
+  right: 5px;
+}
+.btn-blue.arrow:after {
+  content: '';
+  display: block;
+  height: 12px;
+  width: 13px;
+  position: absolute;
+  right: 17px;
+  top: 14px;
+  background-image: url("../images/btn-arrow.png");
+  transition: all .2s;
 }
 .cbalink {
   display: none !important;
@@ -785,6 +812,53 @@ body {
 .main .footer .social a {
   margin: 0 12px;
 }
+.partners {
+  padding-top: 60px;
+}
+.partners .section-title {
+  margin: 0 auto;
+  text-transform: uppercase;
+}
+.partners .carousel {
+  margin-top: 50px;
+}
+.partners .carousel .carousel-control {
+  background: transparent !important;
+}
+.partners .carousel .carousel-control {
+  opacity: 1 !important;
+  top: 5px;
+  width: 30px;
+}
+.partners .carousel .carousel-control.left {
+  left: -70px;
+}
+.partners .carousel .carousel-control.right {
+  right: -70px;
+}
+.partners .carousel .carousel-control img {
+  cursor: pointer !important;
+}
+.partners .carousel .carousel-indicators {
+  bottom: -50px;
+}
+.partners .carousel .carousel-indicators li {
+  height: 12px;
+  width: 12px;
+  min-height: 12px;
+  border: 2px solid #dbdbe7;
+  transition: border .2s;
+  margin: 0 0 12px;
+}
+.partners .carousel .carousel-indicators li.active {
+  border-color: #359aee;
+}
+.partners .carousel .slide {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
 .need {
   padding: 65px 0;
 }
@@ -851,6 +925,135 @@ body {
 .need .content {
   padding-top: 180px;
 }
+.how .section-title {
+  margin-top: 100px;
+}
+.how .scheme {
+  padding: 100px 0 140px;
+}
+.how .scheme .item {
+  font-family: Lato;
+  text-align: center;
+  position: relative;
+}
+.how .scheme .item:after,
+.how .scheme .item:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 60px;
+}
+.how .scheme .item p {
+  color: #26272d;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+.how .scheme .item span {
+  color: #8c8f94;
+  font-size: 18px;
+}
+.how .scheme .first-row {
+  display: flex;
+}
+.how .scheme .first-row .first {
+  margin-right: 110px;
+}
+.how .scheme .first-row .first:before {
+  height: 126px;
+  width: 70px;
+  left: -13px;
+  top: 165px;
+  background-image: url("../images/scheme-1-before.png");
+}
+.how .scheme .first-row .first:after {
+  height: 14px;
+  width: 91px;
+  right: -100px;
+  background-image: url("../images/scheme-1-after.png");
+}
+.how .scheme .first-row .second {
+  margin-right: 105px;
+}
+.how .scheme .first-row .second:after {
+  height: 18px;
+  width: 91px;
+  right: -100px;
+  background-image: url("../images/scheme-2-after.png");
+}
+.how .scheme .first-row .third:after {
+  height: 230px;
+  width: 45px;
+  right: -55px;
+  background-image: url("../images/scheme-3-after.png");
+}
+.how .scheme .second-row {
+  display: flex;
+  margin-top: 25px;
+}
+.how .scheme .second-row .first {
+  margin-right: 120px;
+  padding-top: 15px;
+}
+.how .scheme .second-row .first:after {
+  height: 17px;
+  width: 91px;
+  right: -105px;
+  background-image: url("../images/scheme-4-after.png");
+}
+.how .scheme .second-row .first img {
+  margin-bottom: 21px;
+}
+.how .scheme .second-row .second {
+  margin-right: 110px;
+}
+.how .scheme .second-row .second:after {
+  height: 15px;
+  width: 91px;
+  right: -100px;
+  background-image: url("../images/scheme-5-after.png");
+}
+.how .scheme .second-row .third:after {
+  height: 225px;
+  width: 45px;
+  top: 70px;
+  right: -55px;
+  background-image: url("../images/scheme-6-after.png");
+}
+.how .scheme .third-row {
+  margin-top: 25px;
+  display: block;
+  position: absolute;
+  right: 0;
+  float: right;
+  margin-right: 25px;
+}
+.how .scheme .third-row .item {
+  display: inline-block;
+}
+.how .scheme .third-row .second {
+  margin-left: 120px;
+  margin-right: 35px;
+}
+.how .scheme .third-row .second:after {
+  height: 14px;
+  width: 91px;
+  left: -105px;
+  background-image: url("../images/scheme-5-after.png");
+}
+.how .scheme .third-row .first {
+  padding-top: 15px;
+}
+.how .scheme .third-row .first img {
+  margin-bottom: 21px;
+}
+.how .scheme .third-row .first:before {
+  height: 236px;
+  width: 241px;
+  left: -15px;
+  top: -120px;
+  background-image: url("../images/scheme-7-before.png");
+}
 @media screen and (max-width: 1200px) {
   .need .cheep {
     left: 35px;
@@ -889,6 +1092,19 @@ body {
   }
   .need .content .section-text {
     font-size: 18px;
+  }
+  .how {
+    padding-top: 0;
+    padding-bottom: 50px;
+  }
+  .how .section-title {
+    margin-top: 50px;
+  }
+  .how .scheme {
+    padding-top: 50px;
+    padding-bottom: 0;
+    float: none;
+    margin: 0 auto;
   }
 }
 @media screen and (max-width: 767px) {
@@ -947,10 +1163,20 @@ body {
   }
   .section-title {
     margin: 0 auto;
+    font-size: 30px;
+  }
+  .section-text {
+    font-size: 18px;
+  }
+  .partners .item img {
+    margin: 10px auto;
   }
   .need {
-    border-top: 2px solid #267df4;
     padding: 15px 0 35px;
+  }
+  .need .container {
+    display: flex;
+    flex-direction: column-reverse;
   }
   .need .carousel {
     width: 408px;
@@ -963,9 +1189,31 @@ body {
     padding-top: 35px;
     text-align: center;
   }
+  .how {
+    text-align: center;
+    padding-bottom: 45px;
+    margin-bottom: 45px;
+    position: relative;
+  }
+  .how .scheme {
+    position: relative;
+  }
+  .how .scheme .third-row {
+    display: flex;
+    justify-content: flex-end;
+    right: 70px;
+    margin-right: 50px;
+  }
 }
 @media screen and (max-width: 450px) {
-  .need .carousel {
-    display: none;
+  .need .container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .need .slider {
+    transform: scale(0.6);
+    transform-origin: 0 0;
+    height: 500px;
+    width: 150vw;
   }
 }
