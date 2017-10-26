@@ -8,7 +8,30 @@
 .transition(@e) {
   transition: @e .3s ease-in-out;
 }
-
+@keyframes scroll-1 {
+  0%{
+    opacity: 0.4;
+  }
+  33%{
+    opacity: 1;
+  }
+}
+@keyframes scroll-2 {
+  33%{
+    opacity: 0.4;
+  }
+  66%{
+    opacity: 1;
+  }
+}
+@keyframes scroll-3 {
+  66%{
+    opacity: 0.4;
+  }
+  100%{
+    opacity: 1;
+  }
+}
 @keyframes load {
   from {
     opacity: 0;
@@ -24,6 +47,9 @@ body {
   width: 100vw;
   max-width: 100%;
 }
+html{
+  overflow-x: hidden;
+}
 
 .flex-center {
   display: flex;
@@ -36,7 +62,9 @@ body {
   color: @black;
   font-size: 42px;
   position: relative;
-  width: fit-content;
+  width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+  width: -moz-max-content;    /* Firefox/Gecko */
+  width: -webkit-max-content;
   font-weight: 500;
   &:after {
     margin-top: 30px;
@@ -53,7 +81,9 @@ body {
   margin-top: 30px;
   color: @gray;
 }
-
+.btn:focus{
+  color: white !important;
+}
 .btn-blue {
   padding: 10px 70px;
   margin-top: 70px;
@@ -62,7 +92,7 @@ body {
   border-radius: 21px;
   border: none;
   font-size: 16px;
-  color: white;
+  color: white!important;
   transition: all .3s;
   position: relative;
   &:hover {
