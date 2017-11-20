@@ -296,7 +296,7 @@ $(function () {
     upButton.controller();
     book.init();
     iphone();
-    scheme();
+    //scheme();
     offer();
     accordion();
     var scroll = {
@@ -314,16 +314,16 @@ $(function () {
             offset: $('#how').offset().top,
             error: screen.availHeight / 4,
             func: function func() {
-                var items = $('.how .scheme .item'),
+                /*const items = $('.how .scheme .item'),
                     array = [0, 1, 2, 5, 4, 3, 7, 6];
                 /*$('.how .scheme .item').each(function (i,item) {
                     $(item).delay(300*i).hide().show("slide", {direction: "left"}, 600);
                     $(item).delay(300*i).animate({opacity: 1}, 600);
                 })*/
-                array.forEach(function (i, index) {
-                    $(items).eq(i).delay(300 * index).hide().show("slide", { direction: "left" }, 600);
-                    $(items).eq(i).delay(300 * index).animate({ opacity: 1 }, 600);
-                });
+                /*array.forEach((i, index) => {
+                    $(items).eq(i).delay(300 * index).hide().show("slide", {direction: "left"}, 600);
+                    $(items).eq(i).delay(300 * index).animate({opacity: 1}, 600);
+                })*/
             }
         }, {
             status: true,
@@ -331,6 +331,14 @@ $(function () {
             error: screen.availHeight / 5,
             func: function func() {
                 roadmap();
+            }
+        }, {
+            status: true,
+            offset: $('.need .section-title').offset().top,
+            error: 500,
+            func: function func() {
+                // setTimeout(()=>{$('.need .section-title').addClass('animation');},1500)
+
             }
         }],
         controller: function controller() {
@@ -347,29 +355,46 @@ $(function () {
                         }
                     }, 100);
                 });
+                $('.section-title').each(function (i, item) {
+                    var _this3 = this;
+
+                    if (window.pageYOffset + 500 >= $(item).offset().top) {
+                        setTimeout(function () {
+                            $(_this3).addClass('animation');
+                        }, 1500);
+                    }
+                });
             });
         }
     };
+    if (screen.availWidth < 1600 && screen.availWidth > 768) {
+        //$('.line-path').css('transform', 'scale(' + screen.width / $('.line-path').width() + ')');
+    }
     if (screen.availWidth > 768) {
         scroll.controller();
     }
-    $('.des-stars .carousel,.des-advisors .carousel').slick({
-        centerMode: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        dots: true,
-        prevArrow: '<img src="images/partners-left.png" class="control-left">',
-        nextArrow: '<img src="images/partners-right.png" class="control-right">',
-        responsive: [{
-            breakpoint: 767,
-            settings: {
-                arrows: true,
-                centerMode: true,
-                centerPadding: '40px',
-                slidesToShow: 1,
-                autoplay: true,
-                autoplaySpeed: 5000
-            }
-        }]
+    $('.scheme .item img, .scheme .arrow').mouseenter(function () {
+        if ($(this).hasClass('arrow')) {
+            $(this).find('.comment').animate({ opacity: 1 }).css('transform', 'scale(1)');
+        } else {
+            $(this).siblings('.comment').animate({ opacity: 1, transform: 'scale(1)' }).css('transform', 'scale(1)');
+        }
+    }).mouseleave(function () {
+        $(this).parent().find('.comment').animate({ opacity: 0 }).css('transform', 'scale(0)');
     });
+    if (screen.availWidth > 768) {
+        $('#news .item').each(function () {
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            if (next.next().length > 0) {
+                next.next().children(':first-child').clone().appendTo($(this));
+            } else {
+                $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+            }
+        });
+    }
 });

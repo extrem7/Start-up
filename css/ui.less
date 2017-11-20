@@ -66,11 +66,15 @@ html{
   width: -moz-max-content;    /* Firefox/Gecko */
   width: -webkit-max-content;
   font-weight: 500;
+  &.animation:after{
+    width: 95%;
+  }
   &:after {
-    margin-top: 30px;
+    margin: 30px auto;
+    transition: width .3s;
     content: '';
     display: block;
-    width: 95%;
+    width: 0;
     height: 2px;
     background-color: #267df4;
     border-radius: 1px;
