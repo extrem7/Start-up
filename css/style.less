@@ -36,6 +36,7 @@ body {
   font-family: Geometria;
   .main {
     position: relative;
+    background-size: cover!important;
     .header {
       .container {
         display: flex;
@@ -253,6 +254,14 @@ body {
     margin-top: 35px;
     border-radius: 50px;
     box-shadow: 0 14px 50px fade(black, 15%);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    & > div {
+      max-width: 480px;
+      min-width: 320px;
+      width: 50%;
+    }
     .progress {
       background-color: #d7d7d7;
       box-shadow: 0.5px 0.9px 1px rgba(255, 255, 255, 0.75), inset 0.5px 0.9px 5px rgba(0, 0, 0, 0.4);
@@ -260,6 +269,18 @@ body {
       height: 25px;
       position: relative;
       overflow: visible;
+      .min, .max {
+        position: absolute;
+        color: @black;
+        top: -25px;
+        font-size: 16px;
+      }
+      .min {
+        left: 0;
+      }
+      .max {
+        right: 0;
+      }
     }
     .progress-bar {
       height: 25px;
@@ -282,7 +303,7 @@ body {
     }
     .flex {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       flex-wrap: wrap;
       color: #3c434d;
       font-size: 24px;
@@ -1611,6 +1632,15 @@ footer {
     }
   }
 
+  .finished {
+    .back {
+      justify-content: center;
+      & > div:first-child {
+        margin-bottom: 80px;
+      }
+    }
+  }
+
   .news {
     #news {
       .carousel-inner {
@@ -1924,26 +1954,26 @@ footer {
     }
   }
 
-  .news-page{
-    .main{
-      .header{
-        .container{
+  .news-page {
+    .main {
+      .header {
+        .container {
           flex-direction: column;
           align-items: center;
         }
       }
-      .content{
-        .scroll-down{
+      .content {
+        .scroll-down {
           bottom: 130px;
         }
       }
-      .footer{
-        .date{
+      .footer {
+        .date {
           left: 0;
           right: 0;
           bottom: 100px;
-          width: intrinsic;           /* Safari/WebKit uses a non-standard name */
-          width: -moz-max-content;    /* Firefox/Gecko */
+          width: intrinsic; /* Safari/WebKit uses a non-standard name */
+          width: -moz-max-content; /* Firefox/Gecko */
           width: -webkit-max-content; /* Chrome */
         }
       }
